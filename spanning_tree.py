@@ -8,9 +8,7 @@ def spanning_tree(graph):
     for v in graph.nodes():
         cost[v] = math.inf
         previous[v] = {}
-
     queue = graph.nodes()
-
     while len(queue) != 0:
         u = (0, 0)
         i = math.inf
@@ -18,11 +16,10 @@ def spanning_tree(graph):
             if cost[k] < i and k in queue:
                 i = cost[k]
                 u = k
-
-        queue.remove(u)
+        if u in queue:
+            queue.remove(u)
         for v in graph.successors(u):
             if (v in queue) and (graph.edge_weight((u, v)) < cost[v]):
                 cost[v] = graph.edge_weight((u, v))
                 previous[v] = u
-
     return previous

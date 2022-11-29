@@ -1,7 +1,18 @@
+import random
+
+
 class Graph:
-    def __init__(self):
+    def __init__(self, width, height):
         self.adjacency = {}
         self.weights = {}
+        self.width = width
+        self.height = height
+        for k in range(0, width):
+            for j in range(0, height):
+                if j + 1 <= height - 1:
+                    self.add_edge(((k, j), (k, j + 1)), random.random())
+                if k + 1 <= width - 1:
+                    self.add_edge(((k, j), (k + 1, j)), random.random())
 
     def __str__(self):
         return "adjacency : " + str(self.adjacency) + " \nweights : " + str(self.weights)
@@ -11,28 +22,12 @@ class Graph:
             return
         self.adjacency[s] = set()
 
-    def add_edge(self, edge, weight=1):
+    def add_edge(self, edge, weight=1.0):
         s1, s2 = edge
-
         self.add_node(s1)
         self.add_node(s2)
         self.weights[edge] = weight
         self.adjacency[s1].add(s2)
-
-    def remove_edge(self, edge):
-        if edge not in self.weights:
-            return
-        del self.weights[edge]
-        s1, s2 = edge
-        self.adjacency[s1].remove(s2)
-
-    def remove_node(self, node):
-        if node not in self.adjacency:
-            return
-        for other in self.adjacency:
-            self.remove_edge((node, other))
-            self.remove_edge((other, node))
-        del self.adjacency[node]
 
     def nodes(self):
         return set(self.adjacency)

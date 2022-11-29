@@ -21,7 +21,7 @@ def draw_line(u, v, color=None, line_width=1):
     plot.gca().add_line(plot.Line2D([xu, xv], [yu, yv], color=color, linewidth=line_width))
 
 
-def draw_surroundings(u, v, color=None):
+def draw_wall(u, v, color=None):
     xu, yu = u
     xv, yv = v
     xm = (xu + xv) / 2
@@ -36,4 +36,8 @@ def draw_path(path=None):
         plot.gca().plot(0, 0, "ro")
     else:
         for u in range(1, len(path)):
-            draw_line(path[u-1], path[u], color="red", line_width=4)
+            if path[u] in path[:u]:
+                colour = "black"
+            else:
+                colour = "red"
+            draw_line(path[u-1], path[u], color=colour, line_width=4)
