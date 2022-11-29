@@ -38,7 +38,7 @@ class Maze(Graph):
                           verticalalignment='center',
                           horizontalalignment='center')
             neighbours = [(x, y + 1), (x + 1, y), (x, y - 1), (x - 1, y)]
-            for v in [s for s in neighbours if s not in self.successors(u)]:
+            for v in [s for s in neighbours if s not in self.neightbours(u)]:
                 draw_wall(u, v)
         plot.text(-1, -0.3, "Start here -->", horizontalalignment='right', verticalalignment='bottom')
         plot.text(self.width, self.height-1, "<-- Exit", horizontalalignment='left', verticalalignment='bottom')

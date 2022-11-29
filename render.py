@@ -1,18 +1,4 @@
 import matplotlib.pyplot as plot
-from matplotlib.patches import ConnectionPatch
-
-
-def draw_tree(graph, draw_coordinates=False):
-    for u in graph.nodes():
-        x, y = u
-        if draw_coordinates:
-            plot.text(x, y, str(x) + ', ' + str(y),
-                      verticalalignment='center',
-                      horizontalalignment='center')
-        for v in graph.successors(u):
-            draw_line(u, v)
-    plot.axis('scaled')
-    plot.show()
 
 
 def draw_line(u, v, color=None, line_width=1):

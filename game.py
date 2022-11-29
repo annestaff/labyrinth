@@ -34,7 +34,7 @@ class Game:
         x, y = self.position
         x += u[0]
         y += u[1]
-        if (x, y) in self.maze.successors(self.position):
+        if (x, y) in self.maze.neightbours(self.position):
             self.path.append((x, y))
             self.position = (x, y)
         else:

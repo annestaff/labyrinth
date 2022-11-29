@@ -1,5 +1,4 @@
 import math
-import random
 
 
 def spanning_tree(graph):
@@ -18,7 +17,7 @@ def spanning_tree(graph):
                 u = k
         if u in queue:
             queue.remove(u)
-        for v in graph.successors(u):
+        for v in graph.neightbours(u):
             if (v in queue) and (graph.edge_weight((u, v)) < cost[v]):
                 cost[v] = graph.edge_weight((u, v))
                 previous[v] = u

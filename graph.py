@@ -32,11 +32,8 @@ class Graph:
     def nodes(self):
         return set(self.adjacency)
 
-    def successors(self, node):
+    def neightbours(self, node):
         return set(self.adjacency[node])
-
-    def predecessors(self, node):
-        return set(s for s in self.adjacency if s in self.adjacency[node])
 
     def edge_weight(self, edge):
         return self.weights[edge]
